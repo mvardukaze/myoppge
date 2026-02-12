@@ -133,7 +133,8 @@ function fetchPaginatedData($db, $tableName, $fields, $p) {
     $equals = $p['params']['equals'] ?? [];
     $filter = $p['params']['filter'] ?? [];
     $sortKey = $p['params']['sortKey'] ?? null;
-    $sortDesc = (bool)($p['params']['sortDesc'] ?? false);
+    $sortDescRaw = $p['params']['sortDesc'] ?? false;
+    $sortDesc = ($sortDescRaw === true || $sortDescRaw === 1 || $sortDescRaw === '1' || $sortDescRaw === 'true');
 
     if ($page < 1) {
         $page = 1;

@@ -33,9 +33,11 @@ return function () {
     if($isValid){
         $db->insert("sessions",['token'=>$token,  "ip"=>$_SERVER['REMOTE_ADDR'],'user_id'=>$id]);
 
+        $forwardedProto = strtolower((string)($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? ''));
         $isHttps = (
             (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ||
-            (isset($_SERVER['SERVER_PORT']) && (int)$_SERVER['SERVER_PORT'] === 443)
+            (isset($_SERVER['SERVER_PORT']) && (int)$_SERVER['SERVER_PORT'] === 443) ||
+            $forwardedProto === 'https'
         );
 
         setcookie('sessions', $token, [

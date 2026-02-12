@@ -23,6 +23,11 @@ class Http {
     return this.request(endpoint, "DELETE", data, isFormData);
   }
 
+  // Backward-compatible alias for callers that use del().
+  async del(endpoint, data = null, isFormData = false) {
+    return this.delete(endpoint, data, isFormData);
+  }
+
   async request(endpoint, method = "GET", data = null, isFormData = false) {
     let  url = '';
     try {
