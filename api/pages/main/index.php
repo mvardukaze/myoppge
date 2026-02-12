@@ -11,8 +11,6 @@ return function () {
         ]);
     });
     $router->post('/', function () {
-        ini_set('display_errors', 1);
-        error_reporting(E_ALL);
         global $db,$p,$user;
 
         $data = [

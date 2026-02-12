@@ -8,7 +8,7 @@ let user = false;
 let params = {};
 
 async function code(code) {
-  return await http.post('auth/code', {code:code});
+  return await http.post('auth', {code:code});
 }
 async function login(data){
   return await http.post('auth', data);
