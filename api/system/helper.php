@@ -81,10 +81,8 @@ function logs($table,$data){
     $db->insert('logs',["table"=>$table,"data"=>json_encode($data)]);
 }
 function user(){
-    ini_set('display_errors', 1);
-    error_reporting(E_ALL);
     global $db;
-    $token =  @$_COOKIE['sessions'];
+    $token = $_COOKIE['sessions'] ?? null;
 
     if(!$token) return false;
     if (!is_string($token) || !preg_match('/^[a-f0-9]{128}$/', $token)) return false;

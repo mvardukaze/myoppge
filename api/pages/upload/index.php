@@ -31,14 +31,23 @@ return function () {
         ];
 
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        if ($finfo === false) {
+            error(['error' => 'ფაილის ტიპის შემოწმება ვერ მოხერხდა'], 500);
+        }
+
         $mime = finfo_file($finfo, $file['tmp_name']);
         finfo_close($finfo);
 
-        if (!isset($allowedMime[$mime])) {
+        if (!is_string($mime) || !isset($allowedMime[$mime])) {
             error(['error' => 'ფაილის ტიპი არასწორია'], 400);
         }
 
-        $page = $user['page'];
+        $allowedPages = ['smartelectricsolution', 'elevatorcity'];
+        $page = (string)($user['page'] ?? '');
+        if (!in_array($page, $allowedPages, true)) {
+            error(['error' => 'არასწორი გვერდი'], 403);
+        }
+
         $uploadDir = _API_DIR_ . "/../pages/$page/uploads/";
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0775, true);

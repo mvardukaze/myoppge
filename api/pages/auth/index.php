@@ -2,8 +2,6 @@
 defined('INDEX') or exit('No direct access allowed');
 
 return function () {
-    ini_set('display_errors', 1);
-    error_reporting(E_ALL);
     global $db ,$p;
 
     $password = (string)($p['pass'] ?? '');
@@ -33,7 +31,8 @@ return function () {
     if($isValid){
         $db->insert("sessions",['token'=>$token,  "ip"=>$_SERVER['REMOTE_ADDR'],'user_id'=>$id]);
 
-        $forwardedProto = strtolower((string)($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? ''));
+        $forwardedProtoRaw = (string)($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '');
+        $forwardedProto = strtolower(trim(explode(',', $forwardedProtoRaw)[0] ?? ''));
         $isHttps = (
             (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ||
             (isset($_SERVER['SERVER_PORT']) && (int)$_SERVER['SERVER_PORT'] === 443) ||
