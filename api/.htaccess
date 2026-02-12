@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods: "POST, GET, DELETE, PUT, PATCH, OPTIONS"
+    Header set Access-Control-Allow-Headers: "Auth, Version, Content-Type"
+    RewriteEngine on
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+</IfModule>

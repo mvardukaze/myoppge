@@ -1,0 +1,94 @@
+<div class="mx-auto max-w-7xl px-4 py-14 lg:py-20">
+            <div class="grid lg:grid-cols-2 gap-10 items-center">
+                <div data-aos="fade-up" class="aos-init aos-animate">
+                    <h2 class="text-2xl sm:text-3xl font-semibold text-ses-header">ჩვენ შესახებ</h2>
+                    <p class="mt-3 text-ses-gray leading-relaxed">
+                        Smart Electric Solution უზრუნველყოფს თანამედროვე სტანდარტებზე დაფუძნებულ ელექტრო გადაწყვეტილებებს:
+                        სწორი გამოთვლა, სწორი ფაზირება, დაცვა, ხარისხიანი მონტაჟი და უსაფრთხო ჩაბარება.
+                    </p>
+
+                    <div class="mt-6 grid sm:grid-cols-2 gap-4">
+                        <div class="rounded-3xl bg-ses-bg border border-ses-green p-6">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-user-shield text-ses-green text-xl"></i>
+                                <div class="font-semibold text-ses-header">უსაფრთხოება</div>
+                            </div>
+                            <p class="mt-2 text-sm text-ses-gray">დაცვის ავტომატიკა, წესების დაცვა, ტესტირება.</p>
+                        </div>
+                        <div class="rounded-3xl bg-ses-bg border border-ses-green p-6">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-clipboard-check text-ses-green text-xl"></i>
+                                <div class="font-semibold text-ses-header">ხარისხი</div>
+                            </div>
+                            <p class="mt-2 text-sm text-ses-gray">სუფთა მონტაჟი, სწორი მარკირება, სქემები.</p>
+                        </div>
+                        <div class="rounded-3xl bg-ses-bg border border-ses-green p-6">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-bolt-lightning text-ses-green text-xl"></i>
+                                <div class="font-semibold text-ses-header">ენერგოეფექტურობა</div>
+                            </div>
+                            <p class="mt-2 text-sm text-ses-gray">ოპტიმალური დატვირთვები და თანამედროვე განათება.</p>
+                        </div>
+                        <div class="rounded-3xl bg-ses-bg border border-ses-green p-6">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-handshake text-ses-green text-xl"></i>
+                                <div class="font-semibold text-ses-header">სერვისი</div>
+                            </div>
+                            <p class="mt-2 text-sm text-ses-gray">კონსულტაცია და მხარდაჭერა შესრულების შემდეგაც.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative aos-init aos-animate" data-aos="fade-left">
+                    <div class="rounded-[2rem] overflow-hidden border border-ses-green bg-ses-bg shadow-sm">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between">
+                                <div class="text-sm font-semibold text-ses-header">როგორ ვმუშაობთ</div>
+                                <div class="phase-line w-28"></div>
+                            </div>
+
+                            <ol class="mt-5 space-y-4 text-sm">
+                                <li class="flex gap-3">
+                                    <div class="h-9 w-9 rounded-2xl bg-ses-green/20 flex items-center justify-center font-semibold text-ses-green">1</div>
+                                    <div>
+                                        <div class="font-medium text-ses-header">დათვალიერება / კონსულტაცია</div>
+                                        <div class="text-ses-gray mt-1">მოთხოვნების დაზუსტება, რისკების შეფასება.</div>
+                                    </div>
+                                </li>
+                                <li class="flex gap-3">
+                                    <div class="h-9 w-9 rounded-2xl bg-ses-green/20 flex items-center justify-center font-semibold text-ses-green">2</div>
+                                    <div>
+                                        <div class="font-medium text-ses-header">გათვლა / სქემა</div>
+                                        <div class="text-ses-gray mt-1">დატვირთვები, დაცვა, მასალების სია.</div>
+                                    </div>
+                                </li>
+                                <li class="flex gap-3">
+                                    <div class="h-9 w-9 rounded-2xl bg-ses-green/20 flex items-center justify-center font-semibold text-ses-green">3</div>
+                                    <div>
+                                        <div class="font-medium text-ses-header">მონტაჟი</div>
+                                        <div class="text-ses-gray mt-1">სუფთა სამუშაო, მარკირება და წესრიგი.</div>
+                                    </div>
+                                </li>
+                                <li class="flex gap-3">
+                                    <div class="h-9 w-9 rounded-2xl bg-ses-green/20 flex items-center justify-center font-semibold text-ses-green">4</div>
+                                    <div>
+                                        <div class="font-medium text-ses-header">ტესტირება / ჩაბარება</div>
+                                        <div class="text-ses-gray mt-1">გადამოწმება, განმარტებები, რეკომენდაციები.</div>
+                                    </div>
+                                </li>
+                            </ol>
+
+                            <div class="mt-6 rounded-2xl border border-ses-green p-4 bg-ses-bg">
+                                <div class="flex items-center gap-2 text-sm font-medium text-ses-header">
+                                    <i class="fa-solid fa-circle-info text-ses-green"></i>
+                                    შენიშვნა
+                                </div>
+                                <p class="mt-1 text-sm text-ses-gray">
+                                    ტექსტი/ნომრები შეცვალე რეალური ინფორმაციით (სერტიფიკატები, გარანტია, სერვისის ზონა).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

@@ -1,0 +1,64 @@
+
+@font-face {
+    font-family: 'norm';
+    src: url('BPG_110.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'caps';
+    src: url('BPG_110_Caps.ttf') format('opentype');
+
+}
+@font-face {
+    font-family: 'caps1';
+    src: url('/caps-webfont.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root{
+    /* Brand accents */
+
+    --bg:#ffffff;
+    --ink:#0f172a;
+}
+
+/* Subtle electrical grid background */
+.grid-bg{
+    background:
+            radial-gradient(transparent 0 6px, rgba(2,6,23,.03) 7px) 0 0/42px 42px,
+            linear-gradient(to right, rgba(2,6,23,.035) 1px, transparent 1px) 0 0/42px 42px,
+            linear-gradient(to bottom, rgba(2,6,23,.035) 1px, transparent 1px) 0 0/42px 42px;
+}
+
+/* 3-phase line accent */
+.phase-line{
+    height: 4px;
+    background: linear-gradient(90deg, var(--l1-brown), var(--l2-black), var(--l3-grey));
+    border-radius: 9999px;
+}
+
+/* Button glow */
+.btn-glow{
+    box-shadow: 0 10px 24px rgba(34,197,94,.18);
+}
+
+/* Smooth scroll */
+html { scroll-behavior: smooth; }
+body{
+    font-family: norm;
+}
+.font-medium{
+    font-family: caps, sans-serif;
+}
+.font-medium .py-2{
+    padding-bottom: 0.40rem !important;
+}
+.font-medium a{
+    padding-top: 0.55rem !important;
+}
+.font-medium.py-3{
+    padding-bottom: 0.59rem;
+}
+

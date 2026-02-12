@@ -1,0 +1,106 @@
+<section class="mx-auto max-w-7xl px-4 pt-10 pb-14 lg:pt-16 lg:pb-20 text-ses-gray">
+    <div class="grid lg:grid-cols-2 gap-10 items-center">
+
+        <!-- Left -->
+        <div data-aos="fade-up" class="text-ses-gray">
+            <div class="inline-flex items-center gap-3 rounded-full px-4 py-2 text-sm border-ses-green bg-ses-bg text-ses-gray">
+        <span class="inline-flex items-center gap-2">
+          <span class="h-3 w-2 rounded-full bg-ses-green"></span>
+          სანდო ელექტრო სამუშაოები — სწრაფი რეაგირება და უსაფრთხო შედეგი
+        </span>
+            </div>
+
+            <h2 class="mt-5 text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-ses-header">
+                Smart Electric Solution —
+                <span class="text-ses-green">უსაფრთხო</span> და
+                <span class="whitespace-nowrap">გონივრული</span> ელექტრო გადაწყვეტები
+            </h2>
+
+            <p class="mt-4 text-base sm:text-lg leading-relaxed text-ses-gray">
+                გეხმარებით, რომ თქვენი ობიექტი იყოს უსაფრთხო, გამართული და ენერგოეფექტური —
+                საწყისი კონსულტაციიდან საბოლოო ჩაბარებამდე. ვმუშაობთ როგორც ახალ მონტაჟზე,
+                ისე არსებული ელექტრო ქსელის გამოსწორებასა და განახლებაზე.
+            </p>
+
+            <div class="mt-4 flex flex-wrap gap-2 text-sm">
+        <span class="inline-flex items-center gap-2 rounded-full px-3 py-1 bg-ses-bg border-ses-green">
+          <span class="h-2 w-2 rounded-full bg-ses-green"></span> ენერგოეფექტური მიდგომა
+        </span>
+                <span class="inline-flex items-center gap-2 rounded-full px-3 py-1 bg-ses-bg border-ses-header">
+          <span class="h-2 w-2 rounded-full bg-ses-header"></span> უსაფრთხო მონტაჟი და დაცვა
+        </span>
+                <span class="inline-flex items-center gap-2 rounded-full px-3 py-1 bg-ses-bg border-ses-brown">
+          <span class="h-2 w-2 rounded-full bg-ses-brown"></span> სუფთა და პასუხისმგებელი შესრულება
+        </span>
+            </div>
+
+            <div class="mt-8 flex flex-col sm:flex-row gap-3">
+                <a href="#contact"
+                   class="inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 font-medium btn-glow transition-all bg-ses-green text-white" onmouseover="this.style.opacity='0.95'" onmouseout="this.style.opacity='1'">
+                    <i class="fa-solid fa-paper-plane"></i> კონსულტაცია და შეფასება
+                </a>
+                <a href="#services"
+                   class="inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 font-medium transition-all bg-ses-bg border-ses-brown text-ses-brown" onmouseover="this.classList.add('bg-opacity-10')" onmouseout="this.classList.remove('bg-opacity-10')">
+                    <i class="fa-solid fa-list-check"></i> სერვისების ნახვა
+                </a>
+            </div>
+
+            <div class="mt-8 grid grid-cols-3 gap-3 sm:gap-4 max-w-xl">
+                <div class="rounded-2xl p-4 bg-ses-bg border-ses-green">
+                    <div class="text-2xl font-semibold text-ses-header">სასწრაფო</div>
+                    <div class="text-xs mt-1 text-ses-gray">ავარიული რეაგირება*</div>
+                </div>
+                <div class="rounded-2xl p-4 bg-ses-bg border-ses-green">
+                    <div class="text-2xl font-semibold text-ses-header">+10y</div>
+                    <div class="text-xs mt-1 text-ses-gray">გამოცდილება</div>
+                </div>
+                <div class="rounded-2xl p-4 bg-ses-bg border-ses-green">
+                    <div class="text-2xl font-semibold text-ses-header">100%</div>
+                    <div class="text-xs mt-1 text-ses-gray">უსაფრთხოება</div>
+                </div>
+            </div>
+
+            <p class="mt-3 text-xs text-ses-gray">*რეაგირების პირობები და ზონა — შეთანხმებით.</p>
+        </div>
+
+        <!-- Right -->
+        <div class="relative" data-aos="fade-left">
+            <div class="absolute -inset-6 rounded-[2.2rem] blur-2xl bg-gradient-to-tr from-ses-green/20 via-ses-bg to-ses-footer/20"></div>
+
+            <div class="relative rounded-[2rem] overflow-hidden shadow-sm border-ses-green bg-ses-bg">
+                <div class="p-5 flex items-center justify-between border-b border-ses-green">
+                    <div class="flex items-center gap-3">
+                        <span class="h-3 w-3 rounded-full bg-ses-green"></span>
+                        <span class="text-sm font-medium text-ses-header">სამუშაოს მაგალითი</span>
+                    </div>
+                    <span class="text-xs text-ses-gray">სწორი ფაზირება • სწორი დაცვა</span>
+                </div>
+
+                <div class="p-5">
+                    <img class="w-full h-72 sm:h-80 object-cover rounded-2xl"
+                         src="https://picsum.photos/seed/ses-electric/1200/800"
+                         alt="Electrical work photo" />
+
+                    <div class="mt-5 grid grid-cols-2 gap-4">
+                        <div class="rounded-2xl p-4 border-ses-green bg-ses-bg">
+                            <div class="flex items-center gap-2 text-sm font-medium text-ses-header">
+                                <i class="fa-solid fa-shield-halved text-ses-green"></i> დაცვა და ავტომატიკა
+                            </div>
+                            <p class="mt-2 text-sm text-ses-gray">ავტომატები, RCD/RCBO, გამანაწილებელი დაფები.</p>
+                        </div>
+
+                        <div class="rounded-2xl p-4 border-ses-green bg-ses-bg">
+                            <div class="flex items-center gap-2 text-sm font-medium text-ses-header">
+                                <i class="fa-solid fa-lightbulb text-ses-green"></i> განათება და დიმერი
+                            </div>
+                            <p class="mt-2 text-sm text-ses-gray">სანათები, ლედ-ლენტები, სცენური განათება.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 phase-line"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
