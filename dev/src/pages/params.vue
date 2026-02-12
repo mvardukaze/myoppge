@@ -387,7 +387,7 @@ async function save() {
   loading.value = true;
   try {
     let d = structuredClone(toRaw(data.value));
-    await http.post("main", d);
+    await http.post("param", d);
 
     snackbarText.value = "ცვლილებები წარმატებით შეინახა!";
     snackbarColor.value = "success";

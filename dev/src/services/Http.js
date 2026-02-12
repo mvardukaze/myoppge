@@ -19,6 +19,10 @@ class Http {
     return this.request(endpoint, "POST", data, isFormData);
   }
 
+  async delete(endpoint, data = null, isFormData = false) {
+    return this.request(endpoint, "DELETE", data, isFormData);
+  }
+
   async request(endpoint, method = "GET", data = null, isFormData = false) {
     let  url = '';
     try {

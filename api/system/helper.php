@@ -87,10 +87,12 @@ function user(){
     $token =  @$_COOKIE['sessions'];
 
     if(!$token) return false;
+    if (!is_string($token) || !preg_match('/^[a-f0-9]{128}$/', $token)) return false;
     $user_id = $db->get('sessions','user_id',['token'=>$token]);
 
     if($user_id){
         $user = $db->get('users','*',['id'=>$user_id]);
+        if (!$user) return false;
         unset($user['pass']);
         return $user;
     }
@@ -126,51 +128,94 @@ function send_email($to, $body, $subject = 'sapCard', $from = "sapcard@nikora.ap
 }
 function fetchPaginatedData($db, $tableName, $fields, $p) {
     $pageSize = $p['params']['pageSize'] ?? 12;
-    $page     = $p['params']['page'] ?? 1;
-    $search   = $p['params']['search'] ?? '';
-    $equals   = $p['params']['equals'] ?? [];
-    $filter   = $p['params']['filter'] ?? [];
-    $sortKey  = $p['params']['sortKey'] ?? null;
-    $sortDesc = $p['params']['sortDesc'] ?? false;
-    $params = [];
+    $page = (int)($p['params']['page'] ?? 1);
+    $search = (string)($p['params']['search'] ?? '');
+    $equals = $p['params']['equals'] ?? [];
+    $filter = $p['params']['filter'] ?? [];
+    $sortKey = $p['params']['sortKey'] ?? null;
+    $sortDesc = (bool)($p['params']['sortDesc'] ?? false);
+
+    if ($page < 1) {
+        $page = 1;
+    }
+
     $colls = [];
+    $allowedSort = [];
+    $orConditions = [];
+    $andConditions = [];
+    $map = [];
+    $paramIndex = 0;
+
     foreach ($fields as $key => $field) {
-        if(is_int($key)) {
-            if($search)  $params['OR'][] = "`$field` LIKE '%$search%'";
-            if(isset($filter[$field]))$params['AND'][] = "`$field` LIKE '%$filter[$field]%'";
-            if(isset($equals[$field]))$params['AND'][] = "`$field` = '$equals[$field]'";
-            $colls[] = $field;
-            if($sortKey==$field) $params['ORDER'] = " `$field`".($sortDesc ? ' DESC' : '');
-        }
-        else {
-            if ($search)  $params['OR'][]=("$field LIKE '%$search%'");
-            if(isset($filter[$key])) $params['AND'][] = "$field LIKE '%$filter[$key]%'";
-            if(isset($equals[$key])) $params['AND'][] = "$field = '$equals[$key]'";
-            $colls[$key]=$db::raw($field);
-            if($sortKey==$key) $params['ORDER'] = " `$key`".($sortDesc ? ' DESC' : '');
+        if (is_int($key)) {
+            $column = $field;
+            $colls[] = $column;
+            $allowedSort[] = $column;
+
+            if ($search !== '') {
+                $k = ':search_' . $paramIndex++;
+                $orConditions[] = "`{$column}` LIKE {$k}";
+                $map[$k] = '%' . $search . '%';
+            }
+            if (isset($filter[$column])) {
+                $k = ':filter_' . $paramIndex++;
+                $andConditions[] = "`{$column}` LIKE {$k}";
+                $map[$k] = '%' . $filter[$column] . '%';
+            }
+            if (isset($equals[$column])) {
+                $k = ':equals_' . $paramIndex++;
+                $andConditions[] = "`{$column}` = {$k}";
+                $map[$k] = (string)$equals[$column];
+            }
+        } else {
+            $alias = $key;
+            $expression = $field;
+            $colls[$alias] = $db::raw($expression);
+            $allowedSort[] = $alias;
+
+            if ($search !== '') {
+                $k = ':search_' . $paramIndex++;
+                $orConditions[] = "({$expression}) LIKE {$k}";
+                $map[$k] = '%' . $search . '%';
+            }
+            if (isset($filter[$alias])) {
+                $k = ':filter_' . $paramIndex++;
+                $andConditions[] = "({$expression}) LIKE {$k}";
+                $map[$k] = '%' . $filter[$alias] . '%';
+            }
+            if (isset($equals[$alias])) {
+                $k = ':equals_' . $paramIndex++;
+                $andConditions[] = "({$expression}) = {$k}";
+                $map[$k] = (string)$equals[$alias];
+            }
         }
     }
 
-    if($params['OR']) {
-        $params['AND'][] = "(".implode(' OR ', $params['OR']) .")";
-        unset($params['OR']);
+    if (!empty($orConditions)) {
+        $andConditions[] = '(' . implode(' OR ', $orConditions) . ')';
     }
-    $paramsString = "";
-    if($params['AND']){
-        $paramsString = " WHERE ";
-        $paramsString.= implode(' AND ', $params['AND']);
+
+    $paramsString = '';
+    if (!empty($andConditions)) {
+        $paramsString = ' WHERE ' . implode(' AND ', $andConditions);
     }
-    $count = $db->count($tableName,  $db::raw($paramsString));
-    if($params['ORDER']) $paramsString.= " ORDER BY ". $params['ORDER'];
+
+    $count = $db->count($tableName, $db::raw($paramsString, $map));
+
+    if ($sortKey && in_array($sortKey, $allowedSort, true)) {
+        $safeSort = preg_replace('/[^a-zA-Z0-9_]/', '', (string)$sortKey);
+        if ($safeSort !== '') {
+            $paramsString .= " ORDER BY `{$safeSort}`" . ($sortDesc ? ' DESC' : '');
+        }
+    }
+
     if ($pageSize !== 'total') {
+        $pageSize = max(1, (int)$pageSize);
         $offset = ($page - 1) * $pageSize;
-        $paramsString.= " LIMIT $pageSize OFFSET $offset";
+        $paramsString .= " LIMIT {$pageSize} OFFSET {$offset}";
     }
-    //die($paramsString);
 
-
-    $items = $db->select($tableName, $colls , $db::raw($paramsString));
-    //die($db->last());
+    $items = $db->select($tableName, $colls, $db::raw($paramsString, $map));
 
     return [
         "items" => $items,
