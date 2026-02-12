@@ -10,7 +10,7 @@ $db = new Db_class\Db_classs([
     'database_name' => 'oopge_main',
     'server' => 'localhost',
     'username' => 'oopge_main',
-    'password' => 'KCweHO5Cwu-l2584',
+    'password' => '*****',
     'charset' => 'utf8mb4'
 ]);
 $params = $db->get('params',['logo','name','phone','email','address','fb','instagram','user_id','backgroundColor','textColor','headerColor','footerColor','primaryColor','buttonColor','enable'],['user_id'=> $user_id, "ORDER"=>["id"=>"DESC"]]);
